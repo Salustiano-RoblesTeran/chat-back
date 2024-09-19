@@ -3,7 +3,7 @@ const http = require('http');
 const server = http.createServer();
 
 const io = require('socket.io')(server, {
-    cors: { origin: '*' } // después poner el dominio (ahora tiene acceso global)
+    cors: { origin: 'https://chatealo-simple.netlify.app/' } // después poner el dominio (ahora tiene acceso global)
 });
 
 io.on('connection', (socket) => {
@@ -37,6 +37,7 @@ io.on('connection', (socket) => {
     });
 });
 
-server.listen(3000, () => {
-    console.log('Servidor escuchando en http://localhost:3000');
+const port = process.env.PORT || 3000;
+server.listen(port, () => {
+    console.log(`Servidor escuchando en http://localhost:${port}`);
 });
