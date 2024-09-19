@@ -3,10 +3,11 @@ const http = require('http');
 const server = http.createServer();
 
 const io = require('socket.io')(server, {
-    cors: { 
-        origin: 'https://chatealo-simple.netlify.app/',
-        methods: ['GET', 'POST']
-     } // después poner el dominio (ahora tiene acceso global)
+    cors: {
+        origin: 'https://chatealo-simple.netlify.app', // El dominio de tu frontend
+        methods: ['GET', 'POST'],
+        allowedHeaders: ['Content-Type'],
+    },
 });
 
 io.on('connection', (socket) => {
